@@ -1,22 +1,29 @@
-.imagecontainer{
-    /* background-color: blue; */
-    background-image: url("../../../public/images/Untitled design.png");
-    /* background-repeat: no-repeat, repeat; */
-   
+.imagecontainer {
+  /* background-color: blue; */
+  background-image: url("../../../public/images/Untitled design.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-top: 30px;
 }
 
 .Box {
-    width: 100%;
+  width: 100%;
+}
+.why_hype_box {
+  border-radius: 12px;
+  background-color: #fa9b11;
+  font-size: 20px;
+  padding: 12px;
+}
+
+@media screen and (min-width: 30em) {
+  .Box {
+    width: 50%;
   }
-  
-  @media screen and (min-width: 30em) {
-    .Box {
-      width: 50%;
-    }
+}
+
+@media screen and (min-width: 48em) {
+  .Box {
+    width: 25%;
   }
-  
-  @media screen and (min-width: 48em) {
-    .Box {
-      width: 25%;
-    }
-  }
+}
