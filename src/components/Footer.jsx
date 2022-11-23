@@ -53,7 +53,7 @@ export default function Footer() {
   return (
     <Box
       backgroundColor="#212529"
-      fontFamily={"AUDIOWIDE"}
+      fontFamily={"Oswald"}
       color={useColorModeValue("gray.700", "gray.200")}
     >
       <Container as={Stack} maxW={"5xl"} py={8}>
@@ -65,13 +65,13 @@ export default function Footer() {
             <Text color="white">
               <Flex gap="3">
                 <Image w="15%" src={email}></Image>
-                <Link color="white">info.hypekar@gmail.com</Link>
+                <Link color="white">info@hypekar.com</Link>
               </Flex>
             </Text>
             <Flex gap="5">
               <Image w="15%" src={phone}></Image>
               <Link color="white" href={"#"}>
-                +91 8299347908
+                +91 9528995347
               </Link>
             </Flex>
 
@@ -121,12 +121,12 @@ export default function Footer() {
           </Stack>
 
           <Stack align={"flex-end"}>
-            <Link color="white" href={"#"}>
+            <a href={"/termsofservice"} style={{ color: "white" }}>
               Terms of Service
-            </Link>
-            <Link color="white" href={"#"}>
+            </a>
+            {/* <Link color="white" href={"/privacy-policy"}>
               Privacy Policy
-            </Link>
+            </Link> */}
           </Stack>
         </SimpleGrid>
         <div className="text-center" style={{ color: "white" }}>

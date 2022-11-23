@@ -63,8 +63,8 @@ export default function NavBar() {
   return (
     <>
       {/* This is the designing code */}
-      <Box bg="#212529" px={4}>
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+      <Box bg="#cccccc" px={4} fontFamily={"Oswald"}>
+        <Flex h={16} alignItems={"center"} justifyContent={"space-around"}>
           <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -72,7 +72,11 @@ export default function NavBar() {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8} alignItems={"center"}>
+          <HStack
+            spacing={8}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+          >
             <Link to="/">
               <Box>
                 <Image borderRadius={10} w="80px" src={logo}></Image>
@@ -86,61 +90,92 @@ export default function NavBar() {
             >
               <Box
                 _hover={{
-                  transform: "scale(1.2)",
+                  // transform: "scale(1.2)",
                   bg: "orange",
                 }}
               >
-                <Link to="/" style={{ color: "white" }}>
+                <Link
+                  to="/"
+                  style={{ color: "#000", fontWeight: 600, padding: "5px" }}
+                >
                   {/* <Butto backgroundColor="#212529;" color="white">HOME</Butto> */}
                   HOME
                 </Link>
               </Box>
-              <Box>
-                {email.length > 0 ? (
-                  <Box
-                    _hover={{
-                      transform: "scale(1.2)",
-                      bg: "orange",
-                    }}
+              {email.length > 0 ? (
+                <Box
+                  _hover={{
+                    // transform: "scale(1.2)",
+                    bg: "orange",
+                  }}
+                >
+                  <Link
+                    to="/myvehicle"
+                    style={{ color: "#000", fontWeight: 600, padding: "5px" }}
                   >
-                    <Link to="/myvehicle" style={{ color: "white" }}>
-                      MY VEHICLE
-                      {/* <Button backgroundColor="#808080;" color="white">MY VEHICLE</Button> */}
-                    </Link>
-                  </Box>
-                ) : (
-                  console.log(null)
-                )}
-              </Box>
+                    MY VEHICLE
+                    {/* <Button backgroundColor="#808080;" color="white">MY VEHICLE</Button> */}
+                  </Link>
+                </Box>
+              ) : (
+                ""
+              )}
               <Box
                 _hover={{
-                  transform: "scale(1.2)",
+                  // transform: "scale(1.2)",
                   bg: "orange",
                 }}
               >
-                <Link to="/services" style={{ color: "white" }}>
+                <Link
+                  to="/services"
+                  style={{
+                    color: "#000",
+                    fontWeight: 600,
+                    padding: "5px",
+                  }}
+                >
                   SERVICES
                   {/* <Button backgroundColor="#808080;" color="white">SERVICES</Button> */}
                 </Link>
               </Box>
               <Box
                 _hover={{
-                  transform: "scale(1.2)",
+                  // transform: "scale(1.2)",
                   bg: "orange",
                 }}
               >
-                <Link to="/about" style={{ color: "white" }}>
+                <Link
+                  to="/spares-accessories"
+                  style={{ color: "#000", fontWeight: 600, padding: "5px" }}
+                >
+                  SPARES & ACCESSORIES
+                  {/* <Button backgroundColor="#808080;" color="white">SERVICES</Button> */}
+                </Link>
+              </Box>
+              <Box
+                _hover={{
+                  // transform: "scale(1.2)",
+                  bg: "orange",
+                }}
+              >
+                <Link
+                  to="/about"
+                  style={{ color: "#000", fontWeight: 600, padding: "5px" }}
+                >
                   ABOUT US
                   {/* <Button backgroundColor="#808080;" color="white">ABOUT US</Button> */}
                 </Link>
               </Box>
               <Box
                 _hover={{
-                  transform: "scale(1.2)",
+                  // transform: "scale(1.2)",
                   bg: "orange",
                 }}
               >
-                <Link to="/contact" style={{ color: "white" }}>
+                <Link
+                  to="/contact"
+                  style={{ color: "#000", fontWeight: 600, padding: "5px" }}
+                >
                   CONTACT US
                   {/* <Button backgroundColor="#808080;" color="white">CONTACT US</Button> */}
                 </Link>
@@ -149,11 +184,14 @@ export default function NavBar() {
               {email.length > 0 ? (
                 <Box
                   _hover={{
-                    transform: "scale(1.2)",
+                    // transform: "scale(1.2)",
                     bg: "orange",
                   }}
                 >
-                  <Link to="/feedback" style={{ color: "white" }}>
+                  <Link
+                    to="/feedback"
+                    style={{ color: "#000", fontWeight: 600, padding: "5px" }}
+                  >
                     FEEDBACK
                     {/* <Button backgroundColor="#808080;" color="white"> FEEDBACK</Button> */}
                   </Link>

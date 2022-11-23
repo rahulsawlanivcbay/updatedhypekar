@@ -29,8 +29,9 @@ import {
   UnorderedList,
   Select,
   SimpleGrid,
+  useMediaQuery,
 } from "@chakra-ui/react";
-import vdo from "../file/Videos/hypekar-video.mp4";
+import vdo from "../file/Videos/video.mp4";
 import "./Testimonals";
 import React, { useState, useEffect, useRef } from "react";
 import "./css-files/Home.css";
@@ -143,6 +144,8 @@ const Home = () => {
     attemptPlay();
   }, []);
 
+  var isTab = useMediaQuery("max-width: 625px");
+
   return (
     <Box width={"100%"}>
       {loading == true ? (
@@ -162,14 +165,20 @@ const Home = () => {
             <CaptionCarousel />
 
             {/* whole below code is designing */}
-            <br />
-            <div className="imagecontainer">
+            {isTab ? null : <br />}
+            <div className="imagecontainer no_bg_mob">
               <Center>
                 {email.length > 0 ? (
                   <Link to="/services">
                     <Button
-                      padding="10"
-                      size="lg"
+                      padding={{
+                        base: "6",
+                        md: "10",
+                      }}
+                      size={{
+                        base: "md",
+                        md: "lg",
+                      }}
                       bg={"orange.400"}
                       color={"white"}
                       _hover={{
@@ -183,8 +192,16 @@ const Home = () => {
                 ) : (
                   <Link to="/login">
                     <Button
-                      padding="10"
-                      size="lg"
+                      padding={{
+                        base: "6",
+                        md: "10",
+                      }}
+                      // size="lg"
+
+                      size={{
+                        base: "md",
+                        md: "lg",
+                      }}
                       bg={"orange.400"}
                       color={"white"}
                       _hover={{
@@ -205,14 +222,14 @@ const Home = () => {
                   md: "repeat(2, 1fr)",
                   lg: "repeat(2, 1fr)",
                 }}
+                alignItems="center"
                 gap={7}
               >
-                <Box padding="5" w="100%" h="500">
-                  {/* <iframe width="100%" height="500px" src={`https://www.youtube.com/embed/Hwhxg9BVFL0`} ></iframe> */}
+                <Box padding="3" w="100%">
                   <video
                     style={{
-                      width: "auto",
-                      height: "555px",
+                      width: "100%",
+                      height: "auto",
                       margin: "0 auto",
                     }}
                     playsInline
@@ -225,7 +242,7 @@ const Home = () => {
                     ref={videoEl}
                   />
                 </Box>
-                <Box borderRadius={10} w="100%" h="500">
+                <Box borderRadius={10} w="100%" h="500" marginTop="20px">
                   <Flex minH={"30vh"} align={"center"} justify={"center"}>
                     <Stack spacing={8} mx={"auto"} maxW={"lg"} py={10} px={6}>
                       <Box
@@ -242,7 +259,7 @@ const Home = () => {
                           <HStack>
                             <Box>
                               <FormControl id="firstName" isRequired>
-                                <FormLabel fontFamily="Euphemia UCAS">
+                                <FormLabel fontFamily="Oswald">
                                   First Name
                                 </FormLabel>
                                 <Input
@@ -256,7 +273,7 @@ const Home = () => {
                             </Box>
                             <Box>
                               <FormControl id="lastName">
-                                <FormLabel fontFamily="Euphemia UCAS">
+                                <FormLabel fontFamily="Oswald">
                                   Last Name
                                 </FormLabel>
                                 <Input
@@ -270,7 +287,7 @@ const Home = () => {
                             </Box>
                           </HStack>
                           <FormControl id="lastName">
-                            <FormLabel fontFamily="Euphemia UCAS">
+                            <FormLabel fontFamily="Oswald">
                               Enter your query
                             </FormLabel>
                             <Input
@@ -282,7 +299,7 @@ const Home = () => {
                             />
                           </FormControl>
                           <FormControl id="email" isRequired>
-                            <FormLabel fontFamily="Euphemia UCAS">
+                            <FormLabel fontFamily="Oswald">
                               Mobile Number
                             </FormLabel>
                             <Input
@@ -298,7 +315,10 @@ const Home = () => {
                             <Button
                               onClick={submitDetails}
                               loadingText="Submitting"
-                              size="lg"
+                              size={{
+                                base: "md",
+                                md: "lg",
+                              }}
                               bg={"orange.400"}
                               color={"white"}
                               _hover={{
@@ -315,9 +335,13 @@ const Home = () => {
                 </Box>
               </Grid>
               <br />
-              <br />
-              <br />
-              <br />
+              {isTab ? null : (
+                <>
+                  <br />
+                  <br />
+                  <br />
+                </>
+              )}
             </div>
             {/* <Heading textAlign="center" fontFamily={"AUDIOWIDE"}>
               Our Serivces in {cityName}
@@ -342,7 +366,7 @@ const Home = () => {
               bgColor={"#FFB94A"}
               borderRadius="10"
               w="100%"
-              h="300px"
+              // h="300px"
               color={"white"}
             >
               <br />
@@ -352,8 +376,8 @@ const Home = () => {
               <br />
               <Text
                 padding="5"
-                fontSize={"32px"}
-                fontFamily="Euphemia UCAS"
+                fontSize={"28px"}
+                fontFamily="Oswald"
                 textAlign={"center"}
               >
                 Hypekar is an initiative taken to organise the automobile
@@ -361,13 +385,14 @@ const Home = () => {
                 Hypekar aims at providing one stop solution to all issues
                 relating automobile at your door-step
               </Text>
+              <br />
             </GridItem>
 
             <GridItem
               bgColor={"#c7c7c7"}
               borderRadius="10"
               w="100%"
-              h="300px"
+              // h="300px"
               color={"white"}
             >
               <br />
@@ -378,7 +403,6 @@ const Home = () => {
               >
                 Why HypeKar ?
               </Heading>
-              <br />
               <br />
 
               <div className="row justify-content-center">
@@ -404,29 +428,33 @@ const Home = () => {
                   <div className="why_hype_box">30 days service gurantee</div>
                 </div>
                 {/* <OrderedList padding="5" fontSize={"large"}>
-                <ListItem fontFamily="Euphemia UCAS">
+                <ListItem fontFamily="Oswald">
                   {" "}
                   0% compromise in service quality
                 </ListItem>
-                <ListItem fontFamily="Euphemia UCAS">
+                <ListItem fontFamily="Oswald">
                   {" "}
                   0% compromise in product quality
                 </ListItem>
-                <ListItem fontFamily="Euphemia UCAS">
+                <ListItem fontFamily="Oswald">
                   Integer molestie lorem at massa
                 </ListItem>
-                <ListItem fontFamily="Euphemia UCAS">
+                <ListItem fontFamily="Oswald">
                   100% transparency
                 </ListItem>
-                <ListItem fontFamily="Euphemia UCAS">
+                <ListItem fontFamily="Oswald">
                   30 days service gurantee
                 </ListItem>
               </OrderedList> */}
               </div>
               <div className="row justify-content-center mt-4">
                 <p
-                  className="text-center"
-                  style={{ fontSize: "22px", color: "black" }}
+                  className="text-center mb-3"
+                  style={{
+                    fontSize: "22px",
+                    color: "black",
+                    fontFamily: "Oswald",
+                  }}
                 >
                   Get all these at your door step
                 </p>
@@ -437,7 +465,7 @@ const Home = () => {
               bgColor={"#FFB94A"}
               borderRadius="10"
               w="100%"
-              h="300px"
+              // h="300px"
               color={"white"}
             >
               <br />
@@ -447,27 +475,23 @@ const Home = () => {
                     Mission
                   </Heading>
                   <br />
-                  <br />
-                  <Text
-                    padding="5"
-                    fontSize={"26px"}
-                    fontFamily="Euphemia UCAS"
-                  >
+                  <Text padding="5" fontSize={"26px"} fontFamily="Oswald">
                     To create a transparent and trustable ecosystem of
                     automobile after-sales market
                   </Text>
                 </div>
+                {isTab ? (
+                  <div className="col-12 only_mobile">
+                    <br />
+                    <br />
+                  </div>
+                ) : null}
                 <div className="col-6 col-lg-6 col-md-6 col-12 mb-2 text-center">
                   <Heading fontFamily={"AUDIOWIDE"} textAlign="center">
                     Vision
                   </Heading>
                   <br />
-                  <br />
-                  <Text
-                    padding="5"
-                    fontSize={"26px"}
-                    fontFamily="Euphemia UCAS"
-                  >
+                  <Text padding="5" fontSize={"26px"} fontFamily="Oswald">
                     Righteous vehicle ownership experience.
                   </Text>
                 </div>
@@ -478,41 +502,107 @@ const Home = () => {
               bgColor={"#c7c7c7"}
               borderRadius="10"
               w="100%"
-              h="300px"
+              // h="300px"
               color={"black"}
             >
               <br />
               <Heading fontFamily={"AUDIOWIDE"} textAlign="center">
                 How HypeKar Works ?
               </Heading>
-              <OrderedList
-                fontFamily="Euphemia UCAS"
-                padding="5"
+              <div
+                style={{ fontFamily: "Oswald", padding: "20px" }}
                 fontSize={"large"}
+                className="text-center my-2"
               >
-                <ListItem> Book your service</ListItem>
-                <ListItem>Hypekar will diagnose your vehicle</ListItem>
-                <ListItem>
+                <p> Book your service</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="18"
+                  fill="currentColor"
+                  className="bi bi-arrow-down-short m-auto"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"
+                  />
+                </svg>
+                <p>Hypekar will diagnose your vehicle</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="18"
+                  fill="currentColor"
+                  className="bi bi-arrow-down-short m-auto"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"
+                  />
+                </svg>
+                <p>
                   {" "}
                   A brief quote and report of issues will be discussed with you
-                </ListItem>
-                <ListItem>
-                  Vehicle service begins with regular updates and videos
-                </ListItem>
-                <ListItem>
-                  your keys will be handed to you for final inspection
-                </ListItem>
-                <ListItem>
-                  Payment will be collected with your valuable feedback
-                </ListItem>
-              </OrderedList>
+                </p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="18"
+                  fill="currentColor"
+                  className="bi bi-arrow-down-short m-auto"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"
+                  />
+                </svg>
+                <p>Vehicle service begins with regular updates and videos</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="18"
+                  fill="currentColor"
+                  className="bi bi-arrow-down-short m-auto"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"
+                  />
+                </svg>
+                <p>Your keys will be handed to you for final inspection</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="18"
+                  fill="currentColor"
+                  className="bi bi-arrow-down-short m-auto"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"
+                  />
+                </svg>
+                <p>Payment will be collected with your valuable feedback</p>
+              </div>
             </GridItem>
-            <div className="row justify-content-between">
-              <div className="col-6 text-center">
+            <div className="row justify-content-around">
+              <div className="col-lg-4 col-md-6 col-6 mb-2 text-center">
                 <Link to="/login">
                   <Button
-                    padding="10"
-                    size="lg"
+                    padding={{
+                      base: "6",
+                      md: "10",
+                    }}
+                    // size="lg"
+                    size={{
+                      base: "md",
+                      md: "lg",
+                    }}
                     bg={"orange.400"}
                     color={"white"}
                     _hover={{
@@ -524,15 +614,21 @@ const Home = () => {
                   </Button>
                 </Link>
               </div>
-              <div className="col-6 text-center">
+              <div className="col-lg-4 col-md-6 col-6 mb-2 text-center">
                 <a
                   href="https://wa.me/message/K7QX5ET2BGVJD1"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <Button
-                    padding="10"
-                    size="lg"
+                    padding={{
+                      base: "6",
+                      md: "10",
+                    }}
+                    size={{
+                      base: "md",
+                      md: "lg",
+                    }}
                     bg={"orange.400"}
                     color={"white"}
                     _hover={{
@@ -567,7 +663,7 @@ const Home = () => {
                       <Box
                         flex="1"
                         textAlign="left"
-                        fontFamily="Euphemia UCAS"
+                        fontFamily="Oswald"
                         fontSize={"22px"}
                       >
                         Why should we choose HypeKar ?
@@ -575,7 +671,7 @@ const Home = () => {
                       <AccordionIcon />
                     </AccordionButton>
                   </h2>
-                  <AccordionPanel pb={4} fontFamily="Euphemia UCAS">
+                  <AccordionPanel pb={4} fontFamily="Oswald">
                     Every month, or every few petrol fill-ups and especially
                     before any long road trips, it’s a good idea to get under
                     the hood of your car and inspect both the oil and coolant
@@ -591,7 +687,7 @@ const Home = () => {
                       <Box
                         flex="1"
                         textAlign="left"
-                        fontFamily="Euphemia UCAS"
+                        fontFamily="Oswald"
                         fontSize={"22px"}
                       >
                         What are the features of the HypeKar ?
@@ -599,7 +695,7 @@ const Home = () => {
                       <AccordionIcon />
                     </AccordionButton>
                   </h2>
-                  <AccordionPanel pb={4} fontFamily="Euphemia UCAS">
+                  <AccordionPanel pb={4} fontFamily="Oswald">
                     To maximise the life and performance of your vehicle, here i
                     s a list of items you should check depending on the time and
                     season.
@@ -611,7 +707,7 @@ const Home = () => {
                       <Box
                         flex="1"
                         textAlign="left"
-                        fontFamily="Euphemia UCAS"
+                        fontFamily="Oswald"
                         fontSize={"22px"}
                       >
                         What are the discount of Multiple services ?
@@ -619,7 +715,7 @@ const Home = () => {
                       <AccordionIcon />
                     </AccordionButton>
                   </h2>
-                  <AccordionPanel pb={4} fontFamily="Euphemia UCAS">
+                  <AccordionPanel pb={4} fontFamily="Oswald">
                     Caring for your car and keeping it in proper running order
                     takes a little bit of effort, but you definitely don’t have
                     to be a mechanical whiz to keep your vehicle running well.
@@ -631,7 +727,7 @@ const Home = () => {
                       <Box
                         flex="1"
                         textAlign="left"
-                        fontFamily="Euphemia UCAS"
+                        fontFamily="Oswald"
                         fontSize={"22px"}
                       >
                         Why HypeKar is need for us ?
@@ -639,7 +735,7 @@ const Home = () => {
                       <AccordionIcon />
                     </AccordionButton>
                   </h2>
-                  <AccordionPanel pb={4} fontFamily="Euphemia UCAS">
+                  <AccordionPanel pb={4} fontFamily="Oswald">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -652,7 +748,7 @@ const Home = () => {
                       <Box
                         flex="1"
                         textAlign="left"
-                        fontFamily="Euphemia UCAS"
+                        fontFamily="Oswald"
                         fontSize={"22px"}
                       >
                         What extra features HypeKar has ?
@@ -660,7 +756,7 @@ const Home = () => {
                       <AccordionIcon />
                     </AccordionButton>
                   </h2>
-                  <AccordionPanel pb={4} fontFamily="Euphemia UCAS">
+                  <AccordionPanel pb={4} fontFamily="Oswald">
                     The biggest hurdle is being aware of what needs to be
                     done—and how often—for optimal vehicle upkeep. By knowing
                     the basics about what your car needs, and when you should
@@ -674,7 +770,7 @@ const Home = () => {
                       <Box
                         flex="1"
                         textAlign="left"
-                        fontFamily="Euphemia UCAS"
+                        fontFamily="Oswald"
                         fontSize={"22px"}
                       >
                         Who is the Director of the HypeKar ?
@@ -682,7 +778,7 @@ const Home = () => {
                       <AccordionIcon />
                     </AccordionButton>
                   </h2>
-                  <AccordionPanel pb={4} fontFamily="Euphemia UCAS">
+                  <AccordionPanel pb={4} fontFamily="Oswald">
                     To make it easy to keep track of your car maintenance
                     schedule, we’ve created a simple, downloadable car
                     maintenance checklist to help you keep on top of your
@@ -692,20 +788,23 @@ const Home = () => {
               </Accordion>
             </GridItem>
           </Grid>
+          <br />
+          <br />
+          <div className="imagecontainer bg_cover">
+            <Heading
+              textAlign={"center"}
+              fontFamily={"AUDIOWIDE"}
+              fontSize={"22px"}
+            >
+              Our valuable feedback from {cityName ? cityName : "Dehradun"}
+            </Heading>
+            <br />
+            <Testimonals />
+            <br />
+            <br /> <br />
+            <br />
+          </div>
 
-          <Heading
-            textAlign={"center"}
-            fontFamily={"AUDIOWIDE"}
-            fontSize={"22px"}
-          >
-            Our valueable feedback from {cityName ? cityName : "Pune"}
-          </Heading>
-          <br />
-
-          <Testimonals />
-          <br />
-          <br />
-          <br />
           <Footer />
         </>
       )}

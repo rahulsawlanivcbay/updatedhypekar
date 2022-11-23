@@ -27,6 +27,10 @@ import { useContext } from "react";
 import useGeoLocation from "./UserLocation";
 import axios from "axios";
 import Footer from "./Footer";
+import pm from "../file/images/pm.png";
+import ac from "../file/images/ac.png";
+import bt from "../file/images/bt.png";
+import dc from "../file/images/dc.png";
 
 const Services = () => {
   const { email, cityName, setCityName } = useContext(GameStateContext);
@@ -63,17 +67,17 @@ const Services = () => {
   return (
     <Box>
       {loading == true ? (
-        <Center>
+        <Center mt="200px">
           <Spinner
             thickness="4px"
-            speed="0.35s"
-            emptyColor="#E2E8F0"
-            // color='blue.500'
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
             size="xl"
           />
         </Center>
       ) : (
-        <Box mt={"0"}>
+        <Box mt={"8"} className="hypekar_service_root">
           <Heading
             textAlign={"center"}
             fontFamily={"AUDIOWIDE"}
@@ -92,7 +96,12 @@ const Services = () => {
             Car Services In - {cityName}
             <br />
             <span>
-              <Heading size="sm" color="RGBA(0, 0, 0, 0.64)" mt={"5"}>
+              <Heading
+                size="sm"
+                color="RGBA(0, 0, 0, 0.64)"
+                mt={"5"}
+                fontFamily={"Oswald"}
+              >
                 {" "}
                 Get discounted periodic car service and repair, wheel care,
                 cashless insurance.
@@ -105,42 +114,46 @@ const Services = () => {
             templateColumns={{
               base: "repeat(1, 1fr)",
               md: "repeat(2, 1fr)",
-              lg: "repeat(3, 2fr)",
+              lg: "repeat(2, 2fr)",
             }}
-            gap={6}
+            gap={8}
+            padding={8}
           >
             <GridItem
               _hover={{
-                transform: "scale(1.2)",
+                transform: "scale(1.05)",
                 bg: "orange",
               }}
               transform="scale(1.0)"
               transition="0.2s ease-in-out"
               w="100%"
               padding="5"
-              h="340"
               bg="#E2E8F0"
+              borderRadius="8px"
             >
               <Heading
                 size="md"
                 textAlign={"center"}
                 color="RGBA(0, 0, 0, 0.64)"
+                fontFamily={"Audiowide"}
               >
-                BASIC SERVICES
+                PERIODIC MAINTAINANCE
               </Heading>
               <Flex justifyContent={"space-around"}>
-                <Image
-                  mt="20px"
-                  w="35%"
-                  src="https://cdn-icons-png.flaticon.com/512/4669/4669436.png"
-                ></Image>
-                <UnorderedList padding="5" w="100%">
-                  <ListItem>Every 5000km or 3 months</ListItem>
+                <Image mt="20px" w="35%" src={pm}></Image>
+                <UnorderedList padding="5" w="100%" fontFamily={"Oswald"}>
+                  <ListItem>Engine oil change</ListItem>
+                  <ListItem>Air filter replacement/ cleaning</ListItem>
                   <ListItem>Oil filter replacement</ListItem>
-                  <ListItem>Air filter cleaning</ListItem>
-                  <ListItem>Coolant top up</ListItem>
-                  <ListItem>Wiper fluid replacement</ListItem>
-                  <ListItem>Battery water top-up</ListItem>
+                  <ListItem>Cabin filter cleaning/ replacement</ListItem>
+                  <ListItem>Spark plugs checking</ListItem>
+                  <ListItem>Coolant top up </ListItem>
+                  <ListItem>Break pad/ break shoes inspection</ListItem>
+                  <ListItem>Wiper fluid top up</ListItem>
+                  <ListItem>Dashboard polishing</ListItem>
+                  <ListItem> Interior cleaning</ListItem>
+                  <ListItem> Interior vacuuming</ListItem>
+                  <ListItem> Eco car wash</ListItem>
                 </UnorderedList>
               </Flex>
               <Center>
@@ -162,31 +175,33 @@ const Services = () => {
 
             <GridItem
               _hover={{
-                transform: "scale(1.2)",
+                transform: "scale(1.05)",
                 bg: "orange",
               }}
               transform="scale(1.0)"
               transition="0.2s ease-in-out"
               w="100%"
               padding="5"
-              h="340"
+              // h="340"
               bg="#E2E8F0"
+              borderRadius="8px"
             >
               <Heading
                 size="md"
                 textAlign={"center"}
                 color="RGBA(0, 0, 0, 0.64)"
+                fontFamily={"Audiowide"}
               >
-                REGULAR AIR CONDITION SERVICE
+                AIR CONDITION MAINTAINANCE
               </Heading>
               <Flex justifyContent={"space-around"}>
-                <Image
+                <Image mt="15px" w="35%" src={ac}></Image>
+                <UnorderedList
                   mt="15px"
-                  w="35%"
-                  src="https://cdn-icons-png.flaticon.com/512/803/803913.png"
-                ></Image>
-                <UnorderedList mt="15px" padding="5" w="100%">
-                  <ListItem>Every 5000km or 3 months </ListItem>
+                  padding="5"
+                  w="100%"
+                  fontFamily={"Oswald"}
+                >
                   <ListItem>A/C filter cleaning</ListItem>
                   <ListItem>A/C vent cleaning</ListItem>
                   <ListItem>A/C inspection</ListItem>
@@ -210,58 +225,7 @@ const Services = () => {
               </Center>
             </GridItem>
 
-            <GridItem
-              _hover={{
-                transform: "scale(1.2)",
-                bg: "orange",
-              }}
-              transform="scale(1.0)"
-              transition="0.2s ease-in-out"
-              w="90%"
-              padding="5"
-              h="340"
-              bg="#E2E8F0"
-            >
-              <Heading
-                size="md"
-                textAlign={"center"}
-                color="RGBA(0, 0, 0, 0.64)"
-              >
-                COMPREHENSIVE SERVICE
-              </Heading>
-              <Flex justifyContent={"space-around"}>
-                <Image
-                  mt="15px"
-                  w="35%"
-                  src="https://cdn-icons-png.flaticon.com/512/3233/3233875.png"
-                ></Image>
-                <UnorderedList mt="15px" padding="5" w="100%">
-                  <ListItem>Every 20,000km or 12 months </ListItem>
-                  <ListItem>Engine oil replacements</ListItem>
-                  <ListItem>Oil filter replacement</ListItem>
-                  <ListItem>Air filter cleaning</ListItem>
-                  <ListItem>Coolant top up</ListItem>
-                  <ListItem>Wiper fluid replacement</ListItem>
-                </UnorderedList>
-              </Flex>
-              <Center>
-                {email.length == 0 ? (
-                  <Link to="/login">
-                    <Button bg="#CBD5E0" mt="20px">
-                      Book Now
-                    </Button>
-                  </Link>
-                ) : (
-                  <Link to="/booking">
-                    <Button bg="#CBD5E0" mt="20px">
-                      Book Now
-                    </Button>
-                  </Link>
-                )}
-              </Center>
-            </GridItem>
-
-            <GridItem
+            {/* <GridItem
               _hover={{
                 transform: "scale(1.2)",
                 bg: "orange",
@@ -277,6 +241,7 @@ const Services = () => {
                 size="md"
                 textAlign={"center"}
                 color="RGBA(0, 0, 0, 0.64)"
+                fontFamily={'Audiowdse'}
               >
                 STANDARD SERVICE
               </Heading>
@@ -310,34 +275,37 @@ const Services = () => {
                   </Link>
                 )}
               </Center>
-            </GridItem>
+            </GridItem> */}
 
             <GridItem
               _hover={{
-                transform: "scale(1.2)",
+                transform: "scale(1.05)",
                 bg: "orange",
               }}
               transform="scale(1.0)"
               transition="0.2s ease-in-out"
               w="100%"
               padding="5"
-              h="340"
+              // h="340"
               bg="#E2E8F0"
+              borderRadius="8px"
             >
               <Heading
                 size="md"
                 textAlign={"center"}
                 color="RGBA(0, 0, 0, 0.64)"
+                fontFamily={"Audiowide"}
               >
-                BATTERY SERVICES
+                BATTERY MAINTAINANCE
               </Heading>
               <Flex justifyContent={"space-around"}>
-                <Image
-                  mt="20px"
-                  w="35%"
-                  src="https://cdn-icons-png.flaticon.com/512/2084/2084219.png"
-                ></Image>
-                <UnorderedList mt="15px" padding="5" w="100%">
+                <Image mt="20px" w="35%" src={bt}></Image>
+                <UnorderedList
+                  mt="15px"
+                  padding="5"
+                  w="100%"
+                  fontFamily={"Oswald"}
+                >
                   <ListItem>Battery Jmp Start</ListItem>
                   <ListItem>Battery Water Topup</ListItem>
                   <ListItem>Battery Replacement</ListItem>
@@ -363,32 +331,42 @@ const Services = () => {
 
             <GridItem
               _hover={{
-                transform: "scale(1.2)",
+                transform: "scale(1.05)",
                 bg: "orange",
               }}
               transform="scale(1.0)"
               transition="0.2s ease-in-out"
-              w="90%"
+              w="100%"
               padding="5"
-              h="340"
+              // h="340"
               bg="#E2E8F0"
+              borderRadius="8px"
             >
               <Heading
                 size="md"
                 textAlign={"center"}
                 color="RGBA(0, 0, 0, 0.64)"
+                fontFamily={"Audiowide"}
               >
-                ACCESSORIES AND SPARES
+                DRY CLEANING
               </Heading>
               <Flex justifyContent={"space-around"}>
-                <Image
-                  mt="20px"
-                  w="35%"
-                  src="https://cdn-icons-png.flaticon.com/512/3825/3825672.png"
-                ></Image>
-                <UnorderedList mt="15px" padding="5" w="100%">
-                  <ListItem>OEM Manufacturer Spares & Accesories</ListItem>
-                  <ListItem>Doorstep Delivery And Installation</ListItem>
+                <Image mt="20px" w="40%" src={dc}></Image>
+                <UnorderedList
+                  mt="15px"
+                  padding="5"
+                  w="100%"
+                  fontFamily={"Oswald"}
+                >
+                  <ListItem>Interior Vacuum Cleaning</ListItem>
+                  <ListItem>Interior Wet Shampooing and Detailing</ListItem>
+                  <ListItem>Dashboard Polishing</ListItem>
+                  <ListItem>Pressure Car Wash</ListItem>
+                  <ListItem>Rubbing with Compound</ListItem>
+                  <ListItem>Machine Rubbing</ListItem>
+                  <ListItem>Alloy Polishing</ListItem>
+                  <ListItem>Wax Polishing</ListItem>
+                  <ListItem>Tyre Dressing</ListItem>
                   {/* <ListItem>Integer molestie lorem at massa</ListItem> */}
                   {/* <ListItem>Facilisis in pretium nisl aliquet</ListItem> */}
                 </UnorderedList>
@@ -474,11 +452,18 @@ const Services = () => {
           </Grid>
           <br />
           <div className="row justify-content-around">
-            <div className="col-4 text-center">
+            <div className="col-lg-4 col-md-6 col-6 mb-2 text-center">
               <Link to="/login">
                 <Button
-                  padding="10"
-                  size="lg"
+                  padding={{
+                    base: "6",
+                    md: "10",
+                  }}
+                  // size="lg"
+                  size={{
+                    base: "md",
+                    md: "lg",
+                  }}
                   bg={"orange.400"}
                   color={"white"}
                   _hover={{
@@ -490,15 +475,21 @@ const Services = () => {
                 </Button>
               </Link>
             </div>
-            <div className="col-4 text-center">
+            <div className="col-lg-4 col-md-6 col-6 mb-2 text-center">
               <a
                 href="https://wa.me/message/K7QX5ET2BGVJD1"
                 target="_blank"
                 rel="noreferrer"
               >
                 <Button
-                  padding="10"
-                  size="lg"
+                  padding={{
+                    base: "6",
+                    md: "10",
+                  }}
+                  size={{
+                    base: "md",
+                    md: "lg",
+                  }}
                   bg={"orange.400"}
                   color={"white"}
                   _hover={{

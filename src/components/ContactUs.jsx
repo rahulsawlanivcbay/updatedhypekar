@@ -1,48 +1,74 @@
-
-import { Heading, Text, Center, useColorModeValue, VStack, StackDivider , Flex, HStack, FormControl, FormLabel , Input, InputGroup , Spinner, Button, Box, Grid, Image, Stack, GridItem } from '@chakra-ui/react';
-import React, {useState, useContext, useEffect} from 'react';
-import ContactUsForm from './ContactUsForm';
+import {
+  Heading,
+  Text,
+  Center,
+  useColorModeValue,
+  VStack,
+  StackDivider,
+  Flex,
+  HStack,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  Spinner,
+  Button,
+  Box,
+  Grid,
+  Image,
+  Stack,
+  GridItem,
+} from "@chakra-ui/react";
+import React, { useState, useContext, useEffect } from "react";
+import ContactUsForm from "./ContactUsForm";
 import { GameStateContext } from "./context/Context";
-import Footer from './Footer';
-
+import Footer from "./Footer";
 
 const ContactUs = () => {
-    const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-    const {cityName} = useContext(GameStateContext)
+  const { cityName } = useContext(GameStateContext);
 
-    useEffect(()=>{
-      setLoading(true) // After entering the application loading should be true
-          setTimeout(()=>{ 
-              setLoading(false) // After 4 seconds loading should be false
-      },1000) // Loading indicator will be appeared in UI for 4 seconds.
-    },[])
-    
-    return (
+  useEffect(() => {
+    setLoading(true); // After entering the application loading should be true
+    setTimeout(() => {
+      setLoading(false); // After 4 seconds loading should be false
+    }, 1000); // Loading indicator will be appeared in UI for 4 seconds.
+  }, []);
+
+  return (
+    <Box>
+      {loading == true ? (
+        <Center mt="200px">
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+          />
+        </Center>
+      ) : (
+        // below code is designing part. I adding the data statically. hope you can understand
         <Box>
-            {
-            loading == true  ? 
-                <Center mt="200px">
-                <Spinner
-                thickness='4px'
-                speed='0.65s'
-                emptyColor='gray.200'
-                color='blue.500'
-                size='xl'
-                />
-                </Center>
-            :
-            
-            // below code is designing part. I adding the data statically. hope you can understand
-            <Box>
-                <Heading padding={3} fontFamily="AUDIOWIDE" textAlign={"center"} mt={5}>GET A CALL FROM US</Heading>
-                <Heading size="m" fontFamily={"Euphemia UCAS"} textAlign={"center"}>Please fill the form to get your queries solved. We'll contact you soon!!</Heading>
-                
-                {/* this is the contactusForm component I declared here. this is for  */}
-                <ContactUsForm  /> 
+          <Heading
+            padding={3}
+            fontFamily="AUDIOWIDE"
+            textAlign={"center"}
+            mt={5}
+          >
+            GET A CALL FROM US
+          </Heading>
+          <Heading size="m" fontFamily={"oswald"} textAlign={"center"}>
+            Please fill the form to get your queries solved. We'll contact you
+            soon!!
+          </Heading>
+          <br />
+          {/* this is the contactusForm component I declared here. this is for  */}
+          <ContactUsForm />
 
-            {/* <Center> */}
-            {/* <Grid w="90%" templateColumns={{base:'repeat(1, 1fr)',
+          {/* <Center> */}
+          {/* <Grid w="90%" templateColumns={{base:'repeat(1, 1fr)',
                     md:'repeat(, 1fr)',
                     lg:'repeat(2, 1fr)'
                     }} gap={6} >
@@ -63,14 +89,14 @@ const ContactUs = () => {
                         
                     </GridItem>
                     </Grid> */}
-                    {/* </Center> */}
-            <br />
-            
-            <Footer/>
-            </Box>
-        }
-        </Box> 
-    );
-}
+          {/* </Center> */}
+          <br />
+
+          <Footer />
+        </Box>
+      )}
+    </Box>
+  );
+};
 
 export default ContactUs;
